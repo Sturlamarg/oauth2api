@@ -28,7 +28,8 @@ codeunit 50200 "OAuth2 Mgt. NAvNab"
     internal procedure GetAuthUrl(OAuth2Setup: Record "OAuth2 Setup NavNAb"; RandomState: Text): Text
     var
         TypeHelper: Codeunit "Type Helper";
-        AuthUrlLbl: Label '%1/%2?client_id=%3&client_secret=%4&grant_type=%5&redirect_uri=%6&state=%7&response_type=%8&scope=%9';
+        //AuthUrlLbl: Label '%1/%2?client_id=%3&client_secret=%4&grant_type=%5&redirect_uri=%6&state=%7&response_type=%8&scope=%9';
+        AuthUrlLbl: Label '%1/%2?client_id=%3&client_secret=%4&grant_type=%5&state=%6&scope=%7';
         AuthUrl: Text;
         RedirectUrl: Text;
         Scopes: Text;
@@ -43,9 +44,9 @@ codeunit 50200 "OAuth2 Mgt. NAvNab"
                 OAuth2Setup."Client Id",
                 OAuth2Setup."Client Secret",
                 OAuth2Setup."Grant Type",
-                TypeHelper.HtmlEncode(RedirectUrl),
+                //TypeHelper.HtmlEncode(RedirectUrl),
                 RandomState,
-                OAuth2Setup."Response Type",
+                //OAuth2Setup."Response Type",
                 TypeHelper.HtmlEncode(Scopes));
 
         exit(AuthUrl);
